@@ -18,7 +18,7 @@ type GoatUser = {
     company?: string
 }
 
-// need to add [] after GoatUser to get rid of squigly, since its an array
+// - need to add [] after GoatUser to get rid of squigly, since its an array
 const papiGoat: GoatUser[] = [
     {
         name: 'omar',
@@ -28,16 +28,18 @@ const papiGoat: GoatUser[] = [
     {
         name: 'Michelle',
         age: 26,
-        // made sure to learn when to use readonly vs '?' :)
+        // - made sure to learn when to use readonly vs '?' :)
     }    
 ]
 
 
 // 2. Define a type for representing the days of week. Valid values are “Monday”, “Tuesday”, etc.
-// needs to be a string. 
+// - needs to be a string. 
 type DayOfWeek = ('Monday' | 'Teusday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday')
 const faveDay: DayOfWeek = 'Friday'
 const faveDay2: DayOfWeek = 'Saturday'
+
+
 
 
 // 3. Given the Person class below, create a getter for getting the full name of a person.
@@ -60,9 +62,10 @@ console.log(theBoi.printInfo())
 //  just use 'extends' after class name and refference the class you want to extend.. 
 // do not have to repeat if it is public since its coming from Person class - it inherits it
 
-// TSError: ⨯ Unable to compile TypeScript:
-// src/homework.ts(64,5): error TS2377: Constructors for derived classes must contain a 'super' call.
-// need to use 'super' keyword to refer to the parent class... inside the curly brackets after constructor
+// - TSError: ⨯ Unable to compile TypeScript:
+// - src/homework.ts(64,5): error TS2377: Constructors for derived classes must contain a 'super' call.
+
+// - need to use 'super' keyword to refer to the parent class... inside the curly brackets after constructor
 
 class Employee extends Person {
     constructor(firstName: string, lastName: string, private _salary: number) {
@@ -83,6 +86,11 @@ console.log(hardWorker.printSalary())
 
 // 5. Given the data below, define an interface for representing employees:
 // HINT: You'll need 2 interfaces.
+
+// - what 2 interfaces are needed..?
+// - employees interface and address since its an object itself ?
+// - define address first..?
+// 
 let employee = {
     name:'Christian Askew',
     salary:1_000_000,
@@ -92,3 +100,31 @@ let employee = {
         zipCode: 98101
     }
 };
+
+    // interface IEmployee {
+    //     name: string,
+    //     salary: number,
+    //     address: IAddress{
+    //         street: string,
+    //         city: string,
+    //         zipCode: number
+    //     }
+    // } this looks wrong.. need to split into two 
+
+    // interface  Address {
+    //     street: string,
+    //     city: string,
+    //     zipCode: number
+    // }
+
+interface IAddress {
+        street: string,
+        city: string,
+        zipCode: number
+    }
+
+interface IEmployee{
+    name: string,
+    salary: number,
+    address: IAddress
+}
